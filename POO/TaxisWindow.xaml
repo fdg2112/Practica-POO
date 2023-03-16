@@ -1,0 +1,42 @@
+﻿<Window x:Class="POO.TaxisWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POO"
+        mc:Ignorable="d"
+        Title="TaxisWindow"  Height="550" Width="800"
+        ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/img1.jpg"/>
+    </Window.Background>
+    <Grid>
+        <Border VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Background="#FF8CDBEA" Opacity="0.8" CornerRadius="15" Margin="0,30,0,0">
+            <TextBlock TextWrapping="Wrap" Text="Menú de taxis" TextAlignment="Center" FontWeight="Bold" FontSize="36"/>
+        </Border>
+        <Button Height="50" Width="250" Content="Agregar Taxi" FontSize="22" FontWeight="Bold" Margin="69,124,510,350" Click="Button_Add" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Margin="69,355,510,89" Content="Avanzar" FontSize="24" FontWeight="Bold" Click="Button_Move"/>
+        <Button Margin="486,355,93,89" Content="Detener" FontSize="24" FontWeight="Bold" Click="Button_Stop"/>
+        <TextBlock  Name="TaxiNumber" Margin="-450 -100 0 0" Height="30" Width="200" Text="Taxi N°" FontSize="20" FontWeight="Bold" Background="#FFDDDDDD" TextAlignment="Center"/>
+        <TextBlock Margin="-500 0 0 0" Height="30" Width="150" Text="N° de Pasajeros" FontSize="20" FontWeight="Bold" Background="#FFDDDDDD" TextAlignment="Center"/>
+        <TextBox Margin="-290 0 0 0" Name="PassengersNumber" MaxLength="1" Height="30" Width="40" TextAlignment="Center" FontSize="20" Text="{Binding PassengersNumberTextBox, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="ValidateText"/>
+        <ListBox Margin="461,129,68,205" Name="TaxisList" Height="200">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Name}" FontSize="14"></TextBlock>
+                        <TextBlock Margin="10 0 0 0" Grid.Column="1" Text="{Binding TransportId}" FontSize="14"></TextBlock>
+                        <TextBlock Margin="25 0 0 0" Grid.Column="2" Text="{Binding PassengersNumber}" FontSize="14"></TextBlock>
+                        <TextBlock Margin="10 0 0 0" Grid.Column="3" Text="pasajeros" FontSize="14"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
